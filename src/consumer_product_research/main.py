@@ -16,7 +16,9 @@ def run():
     Run the crew.
     """
     inputs = {
-        'topic': 'AI LLMs'
+        "product_category": "Smartphones",
+        "target_brands": "Apple, Samsung, Google",
+        "needs_features": "High-resolution photography, Long-lasting battery, Minimum 128GB storage, Budget range $500-$1000"
     }
     ConsumerProductResearch().crew().kickoff(inputs=inputs)
 
@@ -26,7 +28,9 @@ def train():
     Train the crew for a given number of iterations.
     """
     inputs = {
-        "topic": "AI LLMs"
+        "product_category": "Smartphones",
+        "target_brands": "Apple, Samsung, Google",
+        "needs_features": "High-resolution photography, Long-lasting battery, Minimum 128GB storage, Budget range $500-$1000"
     }
     try:
         ConsumerProductResearch().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
@@ -49,7 +53,9 @@ def test():
     Test the crew execution and returns the results.
     """
     inputs = {
-        "topic": "AI LLMs"
+        "product_category": "Smartphones",
+        "target_brands": "Apple, Samsung, Google",
+        "needs_features": "High-resolution photography, Long-lasting battery, Minimum 128GB storage, Budget range $500-$1000"
     }
     try:
         ConsumerProductResearch().crew().test(n_iterations=int(sys.argv[1]), openai_model_name=sys.argv[2], inputs=inputs)

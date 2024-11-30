@@ -1,17 +1,93 @@
-research_task:
+analyze_product_comparison_framework_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is 2024.
-  expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+    Define a comprehensive product comparison framework for {product_category} by identifying 
+    specific consumer requirements, pain points, and comparative criteria. 
+    Key responsibilities include:
+    - Identify consumer requirements for {target_brands} in {product_category}
+    - Define comparative criteria across multiple dimensions
+    - Create a structured approach to feature comparison
+    - Develop a comprehensive decision-making framework
+    - Analyze specific consumer needs: {needs_features}
 
-reporting_task:
-  description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Systematic approach focuses on:
+    - Breaking down complex product information
+    - Evaluating technical specifications
+    - Mapping consumer preferences
+    - Understanding market positioning of {target_brands}
+
   expected_output: >
-    A fully fledge reports with the mains topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    A detailed requirement specification that includes:
+    - Comprehensive set of evaluation criteria for {product_category}
+    - Comparative analysis framework for {target_brands}
+    - Initial product selection parameters
+    - Structured approach to mapping technical features
+    - Consumer preference analysis
+    - Detailed requirement specification aligned with {needs_features}
+
+research_product_information_task:
+  description: >
+    Conduct extensive research to gather comprehensive product information for {product_category} 
+    across {target_brands} from multiple sources. Responsibilities include:
+    - Collect detailed technical specifications and pricing data
+    - Analyze user reviews and expert opinions
+    - Map brand positioning and market perception
+    - Gather information from diverse sources:
+      * Official product websites of {target_brands}
+      * Consumer review platforms
+      * Technical specification databases
+      * Market research reports
+      * User forums and discussion groups
+    - Focus on consumer needs: {needs_features}
+
+  expected_output: >
+    A comprehensive research package containing:
+    - Detailed product feature matrix for {target_brands}
+    - Comprehensive price comparison data
+    - Brand reputation insights
+    - User sentiment analysis
+    - Comparative product information 
+    - Specific feature analysis matching {needs_features}
+
+synthesize_product_insights_task:
+  description: >
+    Transform complex research data into coherent, actionable consumer insights for {product_category}. 
+    Key analysis techniques include:
+    - Consolidate data from research findings for {target_brands}
+    - Identify unique selling propositions (USPs)
+    - Apply comparative feature weighting
+    - Recognize emotional and rational buying drivers
+    - Perform market segmentation analysis
+    - Highlight comparative advantages and disadvantages
+    - Contextualize insights with {needs_features}
+
+  expected_output: >
+    A synthesized insights report comprising:
+    - Concise product comparison summaries for {target_brands}
+    - Buyer persona profiles
+    - Emotional and rational product positioning insights
+    - Unique selling proposition (USP) identification
+    - Trend and pattern recognition
+    - Detailed analysis aligned with {needs_features}
+
+generate_product_recommendations_task:
+  description: >
+    Create personalized, actionable product recommendations for {product_category} 
+    by transforming complex data into clear decision-making guidance. 
+    Develop a sophisticated recommendation methodology that includes:
+    - Precise scoring and ranking systems for {target_brands}
+    - Personalized match percentage calculations
+    - Comprehensive pros and cons analysis
+    - Evaluation of products against {needs_features}
+    - Detailed cost-benefit analysis
+    - Alignment with specific consumer requirements
+
+  expected_output: >
+    A comprehensive recommendation report containing:
+    - Tailored purchasing recommendations for {target_brands}
+    - Visual comparison charts
+    - Confidence scoring for each product
+    - Personalized recommendation percentage
+    - Detailed pros and cons breakdown
+    - Clear decision-making guidance
+    - Insights specifically matching {needs_features}
+

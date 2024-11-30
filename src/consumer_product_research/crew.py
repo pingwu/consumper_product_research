@@ -5,7 +5,7 @@ from crewai.project import CrewBase, agent, crew, task, before_kickoff, after_ki
 # from consumer_product_research.tools.custom_tool import MyCustomTool
 
 # Check our tools documentations for more information on how to use them
-# from crewai_tools import SerperDevTool
+from crewai_tools import SerperDevTool, ScrapeWebsiteTool, YoutubeVideoSearchTool
 
 @CrewBase
 class ConsumerProductResearch():
@@ -27,31 +27,68 @@ class ConsumerProductResearch():
 		return output
 
 	@agent
-	def researcher(self) -> Agent:
+	def analyst_agent(self) -> Agent:
 		return Agent(
-			config=self.agents_config['researcher'],
-			# tools=[MyCustomTool()], # Example of custom tool, loaded on the beginning of file
+			config=self.agents_config['analyst_agent'],
+			tools=[SerperDevTool(), ScrapeWebsiteTool(), YoutubeVideoSearchTool()],
+			allow_delegation=True,
 			verbose=True
 		)
 
 	@agent
-	def reporting_analyst(self) -> Agent:
+	def researcher_agent(self) -> Agent:
 		return Agent(
-			config=self.agents_config['reporting_analyst'],
+			config=self.agents_config['researcher_agent'],
+			tools=[SerperDevTool(), ScrapeWebsiteTool(), YoutubeVideoSearchTool()],
+			allow_delegation=True,
+			verbose=True
+		)
+
+	@agent
+	def summary_agent(self) -> Agent:
+		return Agent(
+			config=self.agents_config['summary_agent'],
+			tools=[],
+			allow_delegation=True,
+			verbose=True
+		)
+
+	@agent
+	def reporting_agent(self) -> Agent:
+		return Agent(
+			config=self.agents_config['reporting_agent'],
+			tools=[],
+			allow_delegation=True,
 			verbose=True
 		)
 
 	@task
-	def research_task(self) -> Task:
+	def analyze_product_comparison_framework_task(self) -> Task:
 		return Task(
-			config=self.tasks_config['research_task'],
+			config=self.tasks_config['analyze_product_comparison_framework_task'],
+			agent=self.analyst_agent(),
 		)
 
 	@task
-	def reporting_task(self) -> Task:
+	def research_product_information_task(self) -> Task:
 		return Task(
-			config=self.tasks_config['reporting_task'],
-			output_file='report.md'
+			config=self.tasks_config['research_product_information_task'],
+			agent=self.researcher_agent(),
+		)
+
+	@task
+	def synthesize_product_insights_task(self) -> Task:
+		return Task(
+			config=self.tasks_config['synthesize_product_insights_task'],
+			agent=self.summary_agent(),
+		)
+
+	@task
+	def generate_product_recommendations_task(self) -> Task:
+		return Task(
+			config=self.tasks_config['generate_product_recommendations_task'],
+			agent=self.reporting_agent(),
+			output_file='product_recommendations.md',
 		)
 
 	@crew
